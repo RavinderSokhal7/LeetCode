@@ -40,7 +40,12 @@ public:
         if(n==0) return 0;
         int l=0,h=n-1;
         while(l<=h){
-            int m = (l+h)/2;//(l>>1) + (h>>1);
+            int m = (l+h)/2;//(l>>1) + (h>>1);// ALWAYS better to use -
+          /*
+          * l+(h-l)/2 => for lower mid (when no of elements are even so two mids, lower and higher)
+          * l+(h-l+1)/2 => for higher mid
+          * must consider checking for cases where infinite loop may occur due to while condition
+          */
             if(c[m] == n-m) return n-m;
             else if(c[m] < n-m) l = m+1;
             else h = m-1;
