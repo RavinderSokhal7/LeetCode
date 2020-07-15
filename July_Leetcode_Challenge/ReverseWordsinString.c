@@ -26,6 +26,8 @@ Note:
 Follow up:
 For C programmers, try to solve it in-place in O(1) extra space.
 */
+//Time complexity is O ( n ), because in the worst case traversing and reversing will cause 2*n iteration.
+//( Correct me if the time complexity is wrong )
 // Solution : time : O( n ) : space : O ( 1 )
 char * reverseWords(char * s){
     int n = strlen(s);
