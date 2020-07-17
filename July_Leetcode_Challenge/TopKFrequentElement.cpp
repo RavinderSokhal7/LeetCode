@@ -31,7 +31,7 @@ return the last 'K' elements;
 make a freq map,
 make a 2 d buckets : index stores the numbers whose frequency equal to index
 finally return K elements starting from the biggest index of buckets 2 d vector;
-*/*
+*/
 
 // Solution 3 : time : 0 ( n ), O( n^2 ) ( but worst case probability is negligible ) : space : O ( n ) :
 class Solution {
