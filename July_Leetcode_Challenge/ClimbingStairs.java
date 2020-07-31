@@ -41,3 +41,19 @@ class Solution {
         return ans[n];
     }
 }
+
+// Solution 2 : time : O ( n ) : space : O ( 1 )
+class Solution {
+    public int climbStairs(int n) {
+        if(n==0||n==1) return 1;
+        int ans=2, pre1 = 2, pre2 = 1;
+        int i = 3;
+        while(i<n+1){
+            ans = pre1 + pre2;
+            pre2 = pre1;
+            pre1 = ans;
+            i++;
+        }
+        return ans;
+    }
+}
