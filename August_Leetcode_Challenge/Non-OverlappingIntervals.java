@@ -1,0 +1,54 @@
+/*
+Non-overlapping Intervals
+Given a collection of intervals, find the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping.
+Example 1:
+Input: [[1,2],[2,3],[3,4],[1,3]]
+Output: 1
+Explanation: [1,3] can be removed and the rest of intervals are non-overlapping.
+
+Example 2:
+Input: [[1,2],[1,2],[1,2]]
+Output: 2
+Explanation: You need to remove two [1,2] to make the rest of intervals non-overlapping.
+
+Example 3:
+Input: [[1,2],[2,3]]
+Output: 0
+Explanation: You don't need to remove any of the intervals since they're already non-overlapping.
+Note:
+
+    You may assume the interval's end point is always bigger than its start point.
+    Intervals like [1,2] and [2,3] have borders "touching" but they don't overlap each other.
+*/
+class Solution {
+    public int eraseOverlapIntervals(int[][] intervals) {
+        Arrays.sort(intervals, new Comparator<int[]>() {
+            public int compare(int[] a, int[] b){
+                if(a[0]==b[0]) return a[1]-b[1];
+                return a[0]-b[0];
+            }
+        });
+        // for(int [] x : intervals){
+        //     System.out.println(x[0] + " " + x[1]);
+        // }
+        int n = intervals.length;
+        if(n==0||n==1) return 0;
+        int start=intervals[0][0], end = intervals[0][1];
+        int ans = 0;
+        
+        for(int i=1;i<n;i++){
+            if(intervals[i][0]<end){
+                ans++;
+                if(intervals[i][1]<end){
+                    end = intervals[i][1];
+                    start = intervals[i][0];
+                }
+            }
+            else{
+                start = intervals[i][0];
+                end = intervals[i][1];
+            }
+        }
+        return ans;
+    }
+}
